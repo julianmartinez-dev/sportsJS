@@ -15,7 +15,7 @@
         <div>
           <a
             href="#"
-            class="btn btn-ghost normal-case text-3xl text-yellow-500 dark:text-red-400"
+            class="btn btn-ghost normal-case text-3xl text-yellow-500"
           >
             <img src="./assets/sport.png" alt="" class="w-10 mr-4" />
             Sports JS</a
@@ -50,7 +50,7 @@
               />
             </svg>
           </label>
-        </div><!--Fin Boton dark/light mode-->
+        </div>
 
         <div class="flex-none"><!--Botón Carrito-->
           
@@ -76,18 +76,86 @@
             </label>
             <div
               tabindex="0"
-              class="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
+              class="mt-3 card card-compact dropdown-content w-80 sm:w-96 bg-base-100 shadow"
             >
               <div class="card-body">
                 <span class="font-bold text-xl">8 Items</span>
                 <span class="text-info">Subtotal: $999</span>
+
+                <div class="overflow-x-auto">
+                  <table class="table w-full">
+                    <!-- head -->
+                    <thead>
+                      <tr class="hover">
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cant.</th>
+                        <th>Borrar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- row 1 -->
+                      <tr class="hover">
+                      
+                        <td>Zapatilla</td>
+                        <td>$20000</td>
+                        <td>2</td>
+                        <td>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                          <line x1="4" y1="7" x2="20" y2="7" />
+                          <line x1="10" y1="11" x2="10" y2="17" />
+                          <line x1="14" y1="11" x2="14" y2="17" />
+                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                          </svg>
+                        </td>
+                      </tr>
+                      <!-- row 2 -->
+                      <tr class="hover">
+                        
+                        <td>Zapatilla</td>
+                        <td>$20000</td>
+                        <td>2</td>
+                        <td>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                          <line x1="4" y1="7" x2="20" y2="7" />
+                          <line x1="10" y1="11" x2="10" y2="17" />
+                          <line x1="14" y1="11" x2="14" y2="17" />
+                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                          </svg>
+                        </td>
+                      </tr>
+                      <!-- row 3 -->
+                      <tr class="hover">
+                      
+                        <td>Zapatilla</td>
+                        <td>$20000</td>
+                        <td>2</td>
+                        <td>
+                          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                          <line x1="4" y1="7" x2="20" y2="7" />
+                          <line x1="10" y1="11" x2="10" y2="17" />
+                          <line x1="14" y1="11" x2="14" y2="17" />
+                          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+                          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+                          </svg>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
                 <div class="card-actions">
-                  <button class="btn btn-primary btn-block">View cart</button>
+                  <button class="btn btn-primary btn-block">Vaciar Carrito</button>
+                  <a href="#" class="btn btn-primary btn-block">Terminar compra</a>
                 </div>
               </div>
             </div>
           </div>
-        </div> <!--Fin Botón Carrito-->
+        </div> 
       </div>
   </header>
 
@@ -102,10 +170,10 @@
         </div>
       </div>
     </div>
-  </section><!--fin hero-->
+  </section>
 
 
-  <section class="mt-12">
+  <section class="mt-12"> <!--filtros de busqueda-->
     <div class="dropdown dropdown-hover container mx-auto flex justify-center z-10">
       <div class="container-sm mx-auto">
         <ul class="menu menu-horizontal bg-base-100 rounded-box p-2">
@@ -151,16 +219,15 @@
     </div>
   </section>
 
-
   <main class="container mx-auto mt-24"><!--Contenido principal-->
     <div class="container mx-auto gap-4 grid md:grid-cols-2 xl:grid-cols-3" id="resultado">
         <!--Productos cargados dinamicamente-->
     </div>
-  </main><!--Fin contenido principal-->
+  </main>
 
   <footer class="footer footer-center p-10 bg-warning text-zinc-900 mt-16">
     <div>
-      <!-- <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" class="inline-block fill-current"><path d="M22.672 15.226l-2.432.811.841 2.515c.33 1.019-.209 2.127-1.23 2.456-1.15.325-2.148-.321-2.463-1.226l-.84-2.518-5.013 1.677.84 2.517c.391 1.203-.434 2.542-1.831 2.542-.88 0-1.601-.564-1.86-1.314l-.842-2.516-2.431.809c-1.135.328-2.145-.317-2.463-1.229-.329-1.018.211-2.127 1.231-2.456l2.432-.809-1.621-4.823-2.432.808c-1.355.384-2.558-.59-2.558-1.839 0-.817.509-1.582 1.327-1.846l2.433-.809-.842-2.515c-.33-1.02.211-2.129 1.232-2.458 1.02-.329 2.13.209 2.461 1.229l.842 2.515 5.011-1.677-.839-2.517c-.403-1.238.484-2.553 1.843-2.553.819 0 1.585.509 1.85 1.326l.841 2.517 2.431-.81c1.02-.33 2.131.211 2.461 1.229.332 1.018-.21 2.126-1.23 2.456l-2.433.809 1.622 4.823 2.433-.809c1.242-.401 2.557.484 2.557 1.838 0 .819-.51 1.583-1.328 1.847m-8.992-6.428l-5.01 1.675 1.619 4.828 5.011-1.674-1.62-4.829z"></path></svg> -->
+
       <a href="#"><img src="./assets/sportFooter.png" alt="" class="w-24 mr-4"/></a>
       <p class="font-bold">
         Sports JS. <br>Tienda deportiva
@@ -171,7 +238,7 @@
     </div> 
     <div>
       <div class="grid grid-flow-col gap-4 mt-0">
-        <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a> 
+        <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="58" height="24" viewBox="1.786 1.783 287.865 76.248"><path d="M213.882 7.245c0-3.015 2.508-5.462 5.6-5.462h64.568c3.093 0 5.6 2.447 5.6 5.462V72.57c0 3.016-2.507 5.461-5.6 5.461h-64.568c-3.092 0-5.6-2.445-5.6-5.46V7.244z" fill="#069"/><path d="M1.785 65.652h31.62V55.27H13.23V15.665H1.785v49.987zM49.414 65.652v-34.43H37.97v34.43h11.444zm-5.721-39.13c3.99 0 6.474-2.644 6.474-5.95-.074-3.378-2.484-5.947-6.398-5.947-3.915 0-6.475 2.57-6.475 5.947 0 3.306 2.484 5.95 6.324 5.95h.075zM54.727 65.652h11.444V46.424c0-1.029.074-2.058.377-2.791.826-2.056 2.709-4.186 5.871-4.186 4.142 0 5.799 3.158 5.799 7.784v18.42H89.66V45.91c0-10.576-5.646-15.497-13.176-15.497-6.173 0-8.884 3.451-10.39 5.802h.077v-4.993H54.727c.151 3.231 0 34.43 0 34.43zM105.805 15.665H94.361v49.987h11.444V54.489l2.86-3.601 8.96 14.764h14.078l-15.056-21.373 13.174-14.54h-13.776s-9.411 13.008-10.24 14.552V15.665z"/><path d="M162.306 51.29c.151-.884.377-2.58.377-4.498 0-8.9-4.518-17.936-16.413-17.936-12.724 0-18.597 10.063-18.597 19.19 0 11.288 7.153 18.337 19.65 18.337 4.97 0 9.561-.732 13.327-2.275l-1.506-7.558c-3.088 1.024-6.25 1.537-10.164 1.537-5.345 0-10.012-2.195-10.389-6.871l23.715.072v.002zm-23.79-7.742c.301-2.938 2.26-7.273 7.153-7.273 5.194 0 6.4 4.628 6.4 7.273h-13.552zM190.93 15.665v17.304h-.151c-1.657-2.422-5.12-4.038-9.71-4.038-8.81 0-16.564 7.05-16.49 19.094 0 11.164 7.003 18.435 15.735 18.435 4.744 0 9.26-2.058 11.52-6.024h.225l.453 5.216h10.163c-.15-2.424-.302-6.61-.302-10.723V15.664h-11.444zm0 34.05c0 .88-.075 1.763-.227 2.495-.675 3.16-3.386 5.361-6.699 5.361-4.742 0-7.83-3.818-7.83-9.84 0-5.654 2.637-10.208 7.906-10.208 3.538 0 6.022 2.423 6.7 5.433.15.663.15 1.398.15 2.058v4.7z"/><path d="M236.85 65.61V31.18h-11.444v34.43h11.445zm-5.72-39.13c3.99 0 6.474-2.644 6.474-5.948-.075-3.379-2.484-5.949-6.398-5.949-3.917 0-6.475 2.57-6.475 5.949 0 3.304 2.483 5.948 6.324 5.948h.074zM243.184 65.61h11.443V46.385c0-1.028.075-2.058.377-2.792.827-2.057 2.71-4.186 5.872-4.186 4.14 0 5.797 3.157 5.797 7.786V65.61h11.443V45.869c0-10.575-5.645-15.496-13.174-15.496-6.173 0-8.884 3.45-10.39 5.8h.076v-4.992h-11.443c.149 3.23-.001 34.43-.001 34.43z" fill="#fff"/></svg></a> 
         <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path></svg></a> 
         <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="fill-current"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path></svg></a>
       </div>

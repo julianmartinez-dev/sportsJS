@@ -52,7 +52,7 @@ function crearCard(datos) {
   card.className =
     'card max-w-96 bg-base-100 shadow-md hover:shadow-yellow-300 borderer mx-auto';
   card.innerHTML = `
-  <figure><img src=${imagen} alt="imagen ropa"></figure>
+  <figure class="pt-4"><img src=${imagen} alt="imagen ropa"></figure>
   <div class="card-body">
     <h2 class="card-title">${marca} ${producto}<div class="badge badge-secondary py-4 text-lg">$${precio}</div></h2>
     <p class=" font-bold">Color: <span class=" font-semibold">${color}</span> </p>
@@ -70,7 +70,19 @@ function crearCard(datos) {
       <div class="badge badge-outline">${categoria}</div> 
       <div class="badge badge-outline">${genero}</div>
     </div>
-    <button class="btn btn-warning mt-4">Agregar al carrito</button>
+    <label for="my-modal" class="btn modal-button btn-warning mt-4">Agregar al carrito</label>
+
+
+    <input type="checkbox" id="my-modal" class="modal-toggle">
+    <div class="modal">
+      <div class="modal-box flex">
+        <h3 class="font-bold text-lg text-center self-center mx-auto">Item agregado al carrito!</h3>
+        <div class="modal-action">
+          <label for="my-modal" class="btn self-end">OK!</label>
+        </div>
+      </div>
+    </div>
+
   </div>
   `;
   
