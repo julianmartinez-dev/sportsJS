@@ -44,7 +44,7 @@ function cambiarModoDark() {
 }
 //Funcion para consultar la base de datos (db.json)
 function consultarBD() {
-  fetch('./db.json')
+  fetch('/assets/db.json')
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       datos.forEach((dato) => {
