@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['index.html', 'main.js'],
+  content: ['index.html', 'main.js','Interface.js'],
    darkMode: 'class',
   theme: {
     extend: {},
