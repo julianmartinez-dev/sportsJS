@@ -8,13 +8,16 @@ import {
 import './style.css';
 
 //Variables
-
 let articulosCarrito = [];
 const darkMode = document.querySelector('#dark-mode');
 const carrito = document.querySelector('#carrito');
 const subtotal = document.querySelector('#subtotal');
 const cantidadArticulos = document.querySelectorAll('.cantidad-articulos');
 const vaciarCarritoBTN = document.querySelector('#vaciar-carrito');
+const filtrosNav = document.querySelector('#filtros')
+const listadoProductos = document.querySelector('#resultado');
+
+
 
 const url = 'https://622c19f3087e0e041e0343ba.mockapi.io/productos';
 
@@ -29,9 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
 function registrarEventos() {
   darkMode.addEventListener('click', cambiarModoDark);
   carrito.addEventListener('click', eliminarProducto);
+  filtrosNav.addEventListener('click',filtrarProductos)
   vaciarCarritoBTN.addEventListener('click', () => {
     articulosCarrito = [];
-    limpiarHTML();
+    limpiarHTML(carrito);
     calcularCantidadArticulos();
     calcularSubtotal();
   });
@@ -139,3 +143,38 @@ function calcularSubtotal() {
   //Imprime en el html el subtotal
   subtotal.innerText = `Subtotal: $${resultado}`;
 }
+
+async function filtrarProductos(e){
+  
+  if(e.target.getAttribute('data-filtro') !== null){
+
+    const key = e.target.getAttribute('data-filtro');
+    const value = e.target.textContent;
+    limpiarHTML(listadoProductos)
+
+    if(key === 'all'){ //Click en Ver Todos tiene asignado "all"
+      consultarBD();
+      document.querySelector('#titulo-lista').textContent = '';
+      return;
+    }
+    const productosFiltrados = await filtrarBD(key,value) // Filtramos la base de datos
+
+    document.querySelector('#titulo-lista').textContent = `Filtro: ${value}`;
+
+
+    const iterador = new Iterator(productosFiltrados);
+    while(iterador.hasNext()){
+      const elemento = iterador.next();
+      crearCard(elemento,agregarProducto);
+    }
+
+  } 
+}
+
+async function filtrarBD(key,value){
+  const url = `https://622c19f3087e0e041e0343ba.mockapi.io/productos?${key}=${value}`;
+  const respuesta = await fetch(url);
+  const datos = await respuesta.json()
+  return datos
+}
+

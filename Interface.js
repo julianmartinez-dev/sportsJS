@@ -3,6 +3,7 @@ import './style.css';
 
 let modoDarkActivo = true;
 const carrito = document.querySelector('#carrito');
+const listadoProductos = document.querySelector('#resultado');
 
 //Funcion para cambiar el modo oscuro
 export function cambiarModoDark() {
@@ -20,6 +21,7 @@ export function cambiarModoDark() {
 
 
 export function crearCard(datos,callback) {
+  
   const { id, producto, marca, categoria, imagen, precio, genero, color } =
     datos;
 
@@ -71,12 +73,12 @@ export function crearCard(datos,callback) {
   card.addEventListener('click', callback);
 
   //Insertamos la card
-  document.querySelector('#resultado').appendChild(card);
+  listadoProductos.appendChild(card);
 }
 
 export function carritoHTML(articulosCarrito) {
   //Limpiamos el contenido del carrito
-  limpiarHTML();
+  limpiarHTML(carrito);
 
   const iteradorCarrito = new Iterator(articulosCarrito);
 
@@ -102,9 +104,10 @@ export function carritoHTML(articulosCarrito) {
  
 }
 
-export function limpiarHTML() {
-  while (carrito.firstChild) {
-    carrito.removeChild(carrito.firstChild);
+export function limpiarHTML(elemento) {
+  //Por parametro recibimos el elemento que queremos limpiar
+  while (elemento.firstChild) {
+    elemento.removeChild(elemento.firstChild);
   }
 }
 
