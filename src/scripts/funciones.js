@@ -15,4 +15,10 @@ Iterator.prototype = {
   },
 };
 
+
+export function validar(obj) {
+  //Validamos que los campos del objeto no esten vacios con el array method "every !== ''""
+  return Object.values(obj).every((input) => input !== '');
+}
+
 export default Iterator;

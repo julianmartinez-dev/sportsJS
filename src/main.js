@@ -1,10 +1,11 @@
-import Iterator from './funciones.js';
+
+import Iterator from './scripts/funciones.js';
 import {
   cambiarModoDark,
   carritoHTML,
   crearCard,
   limpiarHTML,
-} from './Interface.js';
+} from './scripts/Interface.js';
 import './style.css';
 
 //Variables
@@ -160,7 +161,6 @@ async function filtrarProductos(e){
     const productosFiltrados = await filtrarBD(key,value) // Filtramos la base de datos
 
     document.querySelector('#titulo-lista').textContent = `Filtro: ${value}`;
-
 
     const iterador = new Iterator(productosFiltrados);
     while(iterador.hasNext()){
