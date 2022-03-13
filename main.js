@@ -1,12 +1,12 @@
 
-import Iterator from './scripts/funciones.js';
+import Iterator from './src/scripts/funciones.js';
 import {
   cambiarModoDark,
   carritoHTML,
   crearCard,
   limpiarHTML,
-} from './scripts/Interface.js';
-import './style.css';
+} from './src/scripts/Interface.js';
+import './src/style.css';
 
 //Variables
 let articulosCarrito = [];
