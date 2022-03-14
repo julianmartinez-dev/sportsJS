@@ -1,4 +1,5 @@
 
+import { filtrarBD, obtenerProductos } from './src/scripts/API.js';
 import Iterator from './src/scripts/funciones.js';
 import {
   cambiarModoDark,
@@ -26,7 +27,7 @@ const url = 'https://622c19f3087e0e041e0343ba.mockapi.io/productos';
 //Evento principal - Cuando se carga el documento principal
 document.addEventListener('DOMContentLoaded', () => {
   registrarEventos();
-  consultarBD();
+  mostrarProductos();
 });
 
 //Eventos
@@ -42,12 +43,11 @@ function registrarEventos() {
   });
 }
 
-//Funcion para consultar la base de datos (db.json)
-const consultarBD = async () => {
-  try {
-    const respuesta = await fetch(url);
-    const datos = await respuesta.json();
 
+const mostrarProductos = async () => {
+  try {
+
+    const datos = await obtenerProductos()
     const iterador = new Iterator(datos);
 
     while (iterador.hasNext()) {
@@ -154,7 +154,7 @@ async function filtrarProductos(e){
     limpiarHTML(listadoProductos)
 
     if(key === 'all'){ //Click en Ver Todos tiene asignado "all"
-      consultarBD();
+      mostrarProductos();
       document.querySelector('#titulo-lista').textContent = '';
       return;
     }
@@ -171,10 +171,5 @@ async function filtrarProductos(e){
   } 
 }
 
-async function filtrarBD(key,value){
-  const url = `https://622c19f3087e0e041e0343ba.mockapi.io/productos?${key}=${value}`;
-  const respuesta = await fetch(url);
-  const datos = await respuesta.json()
-  return datos
-}
+
 
