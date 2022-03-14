@@ -17,9 +17,11 @@ function validarSesion(e){
 
     
     if(userInput === usuario && passInput === contraseña){
+        sessionStorage.setItem('usuarioAutenticado',true)
         window.location.href = '../pages/home.html'
     }else{
-        mostrarAlerta('Datos incorrectos')
+        sessionStorage.setItem('usuarioAutenticado', false);
+        mostrarAlerta('Usuario o contraseña inválido')
         document.querySelector('#formulario').reset()
 
     }

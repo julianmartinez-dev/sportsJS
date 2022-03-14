@@ -143,4 +143,53 @@ export function mostrarAlerta(mensaje) {
   }
 }
 
+export function deshabilitarElementos() {
+  const elementos = document.querySelectorAll('nav a');
+  elementos.forEach((elemento) => elemento.removeAttribute('href'));
+  document.querySelector('table').classList.add('hidden');
+  document.querySelector('main h2').textContent =
+    'Debes iniciar sesión para ver contenido';
+  const confirmar = confirm('Debes iniciar sesion');
+  if (confirmar) {
+    window.location.href = './login.html';
+  } else {
+    window.location.href = '../../index.html';
+  }
+}
+
+export function crearRow(datos){
+  const { imagen, producto, marca, color, categoria, precio, genero, id } = datos;
+
+   const row = document.createElement('tr');
+   row.innerHTML += `
+        <td class="whitespace-nowrap border-b border-gray-200">
+            <img class="w-16 mx-auto" src="${imagen}">
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+            <p class="text-gray-700">${producto}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+            <p class="text-gray-700">${marca}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+            <p class="text-gray-700">${color}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+            <p class="text-gray-700">${categoria}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+            <p class="text-gray-700 font-bold">$${precio}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+            <p class="text-gray-700">${genero}</p>
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5">
+            <a href="editar-producto.html?id=${id}" class="text-teal-600 hover:text-teal-900 mr-5">Editar</a>
+            <a href="#" data-producto="${id}" class="text-red-600 hover:text-red-900 eliminar">Eliminar</a>
+        </td>
+        
+      `;
+
+      return row;
+}
 

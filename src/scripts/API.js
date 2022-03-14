@@ -65,3 +65,11 @@ export const editarProducto = async (producto) => {
     console.log(error);
   }
 };
+
+export async function filtrarBD(key, value) {
+  const urlFiltrar = `${url}?${key}=${value}`
+  
+  const respuesta = await fetch(urlFiltrar);
+  const datos = await respuesta.json();
+  return datos;
+}
