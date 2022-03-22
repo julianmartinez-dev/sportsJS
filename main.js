@@ -11,6 +11,8 @@ import './src/style.css';
 
 //Variables
 let articulosCarrito = [];
+
+
 const darkMode = document.querySelector('#dark-mode');
 const carrito = document.querySelector('#carrito');
 const subtotal = document.querySelector('#subtotal');
@@ -28,6 +30,14 @@ const url = 'https://622c19f3087e0e041e0343ba.mockapi.io/productos';
 document.addEventListener('DOMContentLoaded', () => {
   registrarEventos();
   mostrarProductos();
+
+  //Recuperar localStorage
+  articulosCarrito = JSON.parse( localStorage.getItem('carrito') ) || []
+  carritoHTML(articulosCarrito)
+  calcularSubtotal()
+  calcularCantidadArticulos()
+
+
 });
 
 //Eventos
@@ -35,12 +45,7 @@ function registrarEventos() {
   darkMode.addEventListener('click', cambiarModoDark);
   carrito.addEventListener('click', eliminarProducto);
   filtrosNav.addEventListener('click',filtrarProductos)
-  vaciarCarritoBTN.addEventListener('click', () => {
-    articulosCarrito = [];
-    limpiarHTML(carrito);
-    calcularCantidadArticulos();
-    calcularSubtotal();
-  });
+  vaciarCarritoBTN.addEventListener('click', vaciarCarrito);
 }
 
 
@@ -78,6 +83,7 @@ function eliminarProducto(e) {
     );
 
     carritoHTML(articulosCarrito);
+    sincronizarStorage();
     //Actualizar la cantidad de articulos en el carrito
     calcularCantidadArticulos();
     calcularSubtotal();
@@ -122,8 +128,11 @@ function leerDatosProducto(producto) {
 
   //Crear el html con los elementos del arreglo de articulos
   carritoHTML(articulosCarrito);
+  sincronizarStorage();
   //Actualizar la cantidad de articulos en el carrito
   calcularCantidadArticulos();
+
+  
 }
 
 function calcularCantidadArticulos() {
@@ -171,5 +180,17 @@ async function filtrarProductos(e){
   } 
 }
 
+
+function sincronizarStorage() {
+  localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+}
+
+function vaciarCarrito(){
+   articulosCarrito = [];
+   limpiarHTML(carrito);
+   calcularCantidadArticulos();
+   calcularSubtotal();
+   sincronizarStorage();
+}
 
 

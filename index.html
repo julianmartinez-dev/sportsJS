@@ -9,19 +9,19 @@
   </head>
   <body>
     <header class="mt-2">
-      <div
-        class="navbar bg-base-100 shadow-xl rounded-box flex justify-around md:justify-between container mx-auto"
-      >
+      <div class="navbar bg-base-100 shadow-xl rounded-box flex flex-col md:flex-row justify-around md:justify-between container mx-auto">
+
+      
+        <!--Logo-->
         <div>
           <a class="btn btn-ghost normal-case text-3xl text-yellow-500">
             <img src="./src/assets/sport.png" alt="imagen logo" class="w-10 mr-4" />Sports JS
           </a>
         </div>
 
-        <div>
+        <div class=" gap-3 flex justify-around md:justify-end w-full mt-5 md:mt-0">
           <!--Boton dark/light mode-->
-
-          <label class="swap swap-rotate">
+          <label class="swap swap-rotate" title="Modo oscuro On/Off">
             <!-- this hidden checkbox controls the state -->
             <input id="dark-mode" type="checkbox" />
 
@@ -47,94 +47,97 @@
               />
             </svg>
           </label>
-        </div>
-
-        <div class="flex-none">
-          <!--Botón Carrito-->
-
+          
+          <!--Boton Administrador-->
           <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle">
-              <div class="indicator">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <span
-                  class="badge-warning badge-sm indicator-item text-md  text-black cantidad-articulos"
-                  >0</span
-                >
+            <label tabindex="0" class="btn btn-ghost" title="Ingresar al panel de administracion">
+              <div class="w-10 rounded-full">
+                <img src="./src/assets/icons8-admin-64.png" />
               </div>
             </label>
-            <div
+            <ul
               tabindex="0"
-              class="mt-3 card card-compact dropdown-content w-80 sm:w-fit bg-base-100 shadow"
+              class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box max-w-52"
             >
-              <div class="card-body">
-                <p
-                  class="font-bold text-xl text-warning cantidad-articulos"
-                ></p>
-                <p class="text-info text-md"><span id="subtotal"></span></p>
+              <li>
+                <a class="justify-between">
+                  Profile
+                  <span class="badge">New</span>
+                </a>
+              </li>
+              <li><a href="./src/pages/login.html">Ingresar</a></li>
+              <li><a>Logout</a></li>
+            </ul>
+          </div>
 
-                <div class="overflow-x-auto">
-                  <table class="table w-full">
-                    <!-- head -->
-                    <thead>
-                      <tr class="hover">
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cant.</th>
-                        <th>Borrar</th>
-                      </tr>
-                    </thead>
-                    <tbody id="carrito"></tbody>
-                  </table>
-                </div>
-                <div class="card-actions">
-                  <button class="btn btn-warning btn-block" id="vaciar-carrito">
-                    Vaciar Carrito
-                  </button>
-                  <a
-                    href="#"
-                    class="btn btn-warning btn-block"
-                    id="terminar-compra"
-                    >Terminar compra</a
+          <!--Boton carrito-->
+          <div class="flex-none">
+            <!--Botón Carrito-->
+
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  <span
+                    class="badge-warning badge-sm indicator-item text-md  text-black cantidad-articulos"
+                    >0</span
+                  >
+                </div>
+              </label>
+              <div
+                tabindex="0"
+                class="mt-3 card card-compact dropdown-content w-80 sm:w-fit bg-base-100 shadow"
+              >
+                <div class="card-body">
+                  <p
+                    class="font-bold text-xl text-warning cantidad-articulos"
+                  ></p>
+                  <p class="text-info text-xl"><span id="subtotal"></span></p>
+
+                  <div class="overflow-x-auto">
+                    <table class="table w-full">
+                      <!-- head -->
+                      <thead>
+                        <tr class="hover">
+                          <th>Producto</th>
+                          <th>Precio</th>
+                          <th>Cant.</th>
+                          <th>Borrar</th>
+                        </tr>
+                      </thead>
+                      <tbody id="carrito"></tbody>
+                    </table>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn btn-warning btn-block" id="vaciar-carrito">
+                      Vaciar Carrito
+                    </button>
+                    <a
+                      href="#"
+                      class="btn btn-warning btn-block"
+                      id="terminar-compra"
+                      >Terminar compra</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="dropdown dropdown-end">
-          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=33791" />
-            </div>
-          </label>
-          <ul
-            tabindex="0"
-            class="mt-48 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
-            </li>
-            <li><a href="./src/pages/login.html">Ingresar</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div>
+       
       </div>
     </header>
 
@@ -164,10 +167,10 @@
 
 
     <section class="bg-primary">
-      <nav class="container flex justify-center mx-auto py-6" id="filtros">
+      <nav class="container flex flex-wrap justify-center mx-auto py-6" id="filtros">
         <div class="dropdown dropdown-hover">
           <label tabindex="0" class="btn m-1 text-warning">Genero</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box w-52">
+          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box  max-w-52">
             <li><a data-filtro="genero">Masculino</a></li>
             <li><a data-filtro="genero">Femenino</a></li>
             <li><a data-filtro="genero">Unisex</a></li>
@@ -176,7 +179,7 @@
 
         <div class="dropdown dropdown-hover">
           <label tabindex="0" class="btn m-1 text-warning">Disciplina</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box w-52">
+          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box max-w-52">
             <li><a data-filtro="categoria">Running</a></li>
             <li><a data-filtro="categoria">Entrenamiento</a></li>
             <li><a data-filtro="categoria">Fútbol</a></li>
@@ -185,7 +188,7 @@
 
         <div class="dropdown dropdown-hover">
           <label tabindex="0" class="btn m-1 text-warning">Marcas</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box w-52">
+          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box max-w-52">
             <li><a data-filtro="marca">Adidas</a></li>
             <li><a data-filtro="marca">Nike</a></li>
             <li><a data-filtro="marca">Puma</a></li>
