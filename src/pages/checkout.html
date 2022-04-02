@@ -4,22 +4,29 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./dist/output.css">
+    <link rel="stylesheet" href="../../dist/output.css" />
     <title>SportsJS - Ecommerce</title>
   </head>
   <body>
     <header class="mt-2">
-      <div class="navbar bg-base-100 shadow-xl rounded-box flex flex-col md:flex-row justify-around md:justify-between container mx-auto">
-
-      
+      <div
+        class="navbar bg-base-100 shadow-xl rounded-box flex flex-col md:flex-row justify-around md:justify-between container mx-auto"
+      >
         <!--Logo-->
         <div>
-          <a class="btn btn-ghost normal-case text-3xl text-yellow-500">
-            <img src="./src/assets/sport.png" alt="imagen logo" class="w-10 mr-4" />Sports JS
+          <a class="btn btn-ghost normal-case text-3xl text-yellow-500" href="../../index.html">
+            <img
+              src="../assets/sport.png"
+              alt="imagen logo"
+              class="w-10 mr-4"
+
+            />Sports JS
           </a>
         </div>
 
-        <div class=" gap-3 flex justify-around md:justify-end w-full mt-5 md:mt-0">
+        <div
+          class="gap-3 flex justify-around md:justify-end w-full mt-5 md:mt-0"
+        >
           <!--Boton dark/light mode-->
           <label class="swap swap-rotate" title="Modo oscuro On/Off">
             <!-- this hidden checkbox controls the state -->
@@ -47,12 +54,16 @@
               />
             </svg>
           </label>
-          
+
           <!--Boton Administrador-->
           <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost" title="Ingresar al panel de administracion">
+            <label
+              tabindex="0"
+              class="btn btn-ghost"
+              title="Ingresar al panel de administracion"
+            >
               <div class="w-10 rounded-full">
-                <img src="./src/assets/icons8-admin-64.png" />
+                <img src="../assets/icons8-admin-64.png" />
               </div>
             </label>
             <ul
@@ -65,155 +76,147 @@
                   <span class="badge">New</span>
                 </a>
               </li>
-              <li><a href="./src/pages/login.html">Ingresar</a></li>
+              <li><a href="../pages/login.html">Ingresar</a></li>
               <li><a>Logout</a></li>
             </ul>
           </div>
 
-          <!--Boton carrito-->
-          <div class="flex-none">
-            <!--Botón Carrito-->
-
-            <div class="dropdown dropdown-end">
-              <label tabindex="0" class="btn btn-ghost btn-circle">
-                <div class="indicator">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-8 w-8"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                  <span
-                    class="badge-warning badge-sm indicator-item text-md  text-black cantidad-articulos"
-                    >0</span
-                  >
-                </div>
-              </label>
-              <div
-                tabindex="0"
-                class="mt-3 card card-compact dropdown-content w-80 sm:w-fit bg-base-100 shadow"
-              >
-                <div class="card-body">
-                  <p
-                    class="font-bold text-xl text-warning cantidad-articulos"
-                  ></p>
-                  <p class="text-info text-xl"><span id="subtotal"></span></p>
-
-                  <div class="overflow-x-auto">
-                    <table class="table w-full">
-                      <!-- head -->
-                      <thead>
-                        <tr class="hover">
-                          <th>Producto</th>
-                          <th>Precio</th>
-                          <th>Cant.</th>
-                          <th>Borrar</th>
-                        </tr>
-                      </thead>
-                      <tbody id="carrito"></tbody>
-                    </table>
-                  </div>
-                  <div class="card-actions">
-                    <button class="btn btn-warning btn-block" id="vaciar-carrito">
-                      Vaciar Carrito
-                    </button>
-                    <a
-                      href="./src/pages/checkout.html"
-                      class="btn btn-warning btn-block"
-                      id="terminar-compra"
-                      >Terminar compra</a
-                    >
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          
         </div>
-       
       </div>
     </header>
 
-    <section>
-      <!--hero-->
-      <div
-        class="hero min-h-screen"
-        style="background-image: url(./src/assets/hero.jpg)"
-      >
-        <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-center text-neutral-content">
-          <div class="max-w-md text-teal-100">
-            <h1 class="mb-5 text-6xl font-bold">Bienvenido</h1>
-            <p class="mb-5 text-2xl text-left leading-10">
-              En SportsJS nos especializamos en productos deportivos y todo lo
-              que necesitas para rendir al máximo. <br>
-              Ademas contamos con envios gratuitos a todo el país.
-            </p>
+    <main class="min-h-screen">
+      <h1 class="text-center mt-10 text-4xl font-bold text-warning">
+        Finalizar compra
+      </h1>
+
+
+
+
+      <div class="md:w-2/3 mx-auto md:flex gap-4 justify-around mt-10">
+
+        <div id="lista-productos" class=" md:overflow-scroll md:h-screen">
+          
+        </div>
+
+        <div>
+            <div class="w-full text-2xl p-4 font-bold">
+                <p>Subtotal: <span id="subtotal" class="font-normal"></span></p>
+                <p>Impuestos (21%): <span id="impuestos" class="font-normal">#</span></p>
+                <p>Envio: <span class="font-normal">Grátis</span></p>
+
+                <p class="text-4xl mt-5">Total a pagar: <span id="total" class="font-normal"></span></p>
+            </div>
+
+            <form class="max-w-xl m-4 p-5 bg-white rounded shadow-xl" id="formulario">
+              <p class="text-gray-800 text-xl font-bold">Datos de envio y facturación</p>
+              <div class="mt-2">
+                <label class="block text-sm text-gray-700" for="nombre"
+                  >Nombre</label
+                >
+                <input
+                  class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded"
+                  id="nombre"
+                  name="nombre"
+                  type="text"
+                  placeholder="Tu nombre"
+                  aria-label="Name"
+                />
+              </div>
+              <div class="mt-2">
+                <label class="block text-sm text-gray-600" for="email"
+                  >Email</label
+                >
+                <input
+                  class="w-full px-5 py-2 text-gray-700 bg-gray-200 rounded"
+                  id="email"
+                  name="email"
+                  type="text"
+                  placeholder="Tu email"
+                  aria-label="Email"
+                />
+              </div>
+              <div class="mt-2">
+                <label class="block text-sm text-gray-600" for="direccion"
+                  >Dirección</label
+                >
+                <input
+                  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                  id="direccion"
+                  name="direccion"
+                  type="text"
+                  placeholder="Calle"
+                  aria-label="Email"
+                />
+              </div>
+              <div class="mt-2">
+                <label class="text-sm block text-gray-600" for="ciudad"
+                  >Ciudad</label
+                >
+                <input
+                  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                  id="ciudad"
+                  name="ciudad"
+                  type="text"
+                  placeholder="Ciudad"
+                  aria-label="Email"
+                />
+              </div>
+              <div class="inline-block mt-2 w-1/2 pr-1">
+                <label class="block text-sm text-gray-600" for="provincia"
+                  >Provincia</label
+                >
+                <input
+                  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                  id="provincia"
+                  name="provincia"
+                  type="text"
+                  placeholder="Provincia"
+                  aria-label="Email"
+                />
+              </div>
+              <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
+                <label class=" block text-sm text-gray-600" for="cp"
+                  >CP:</label
+                >
+                <input
+                  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"
+                  id="cp"
+                  name="cp"
+                  type="text"
+                  placeholder="Codigo Postal"
+                  aria-label="Email"
+                />
+              </div>
             
+              <div class="mt-4">
+                <button
+                  class="w-full px-4 py-2 text-white tracking-wider bg-gray-900 rounded"
+                  type="submit"
+                >
+                  Pagar
+                </button>
+
+              </div>
+            </form>
+        </div>
+
+
+
+      </div>
+
+      <dialog class="bg-gray-900/80 h-full w-full ">
+          <div class="bg-slate-700 max-h-full max-w-full text-gray-300 p-4 md:w-1/2 md:p-10 mx-auto items-center">
+              <h1 class="text-3xl font-bold mt-5">Gracias por intentar comprar en Sports Js</h1>
+              <h2 class="mt-2 text-xl">Haz completado el formulario correctamente.</h2>
+              <p class="mt-2">La web fué construida por motivos estudiantiles, por lo tanto todo el contenido es fitício.</p>
+              <p class="mt-2">De todas maneras te agradezco por tomarte el tiempo en navegar por mi sitio web.</p>
+              <button class= " mt-5 bg-yellow-500 px-6 py-3 uppercase font-bold text-black rounded-md" id="cerrar-dialog" >
+                  Salir
+              </button>
           </div>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="bg-primary">
-      <nav class="container flex flex-wrap justify-center mx-auto py-6" id="filtros">
-        <div class="dropdown dropdown-hover">
-          <label tabindex="0" class="btn m-1 text-warning">Genero</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box  max-w-52">
-            <li><a data-filtro="genero">Masculino</a></li>
-            <li><a data-filtro="genero">Femenino</a></li>
-            <li><a data-filtro="genero">Unisex</a></li>
-          </ul>
-        </div>
-
-        <div class="dropdown dropdown-hover">
-          <label tabindex="0" class="btn m-1 text-warning">Disciplina</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box max-w-52">
-            <li><a data-filtro="categoria">Running</a></li>
-            <li><a data-filtro="categoria">Entrenamiento</a></li>
-            <li><a data-filtro="categoria">Fútbol</a></li>
-          </ul>
-        </div>
-
-        <div class="dropdown dropdown-hover">
-          <label tabindex="0" class="btn m-1 text-warning">Marcas</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box max-w-52">
-            <li><a data-filtro="marca">Adidas</a></li>
-            <li><a data-filtro="marca">Nike</a></li>
-            <li><a data-filtro="marca">Puma</a></li>
-            <li><a data-filtro="marca">Asics</a></li>
-            <li><a data-filtro="marca">Under Armour</a></li>
-          </ul>
-        </div>
-
-        <label tabindex="0" class="btn m-1 text-warning"><span data-filtro="all">Ver todos</span></label>
-      </nav>
-    </section>
-
-
-    <main class="container-sm mx-auto mt-12">
-      <!--Contenido principal-->
-      <h2 class="text-center text-4xl text-warning font-bold block">
-        Nuestros Productos
-      </h2>
-      <h3
-        class="text-center text-3xl mb-6 text-warning font-normal"
-        id="titulo-lista"
-      ></h3>
-      <div
-        class="container mx-auto gap-4 grid md:grid-cols-2 xl:grid-cols-3"
-        id="resultado"
-      >
-        <!--Productos cargados dinamicamente-->
-      </div>
+      </dialog>
     </main>
 
     <footer class="footer footer-center p-10 bg-warning text-zinc-900 mt-16">
@@ -249,7 +252,9 @@
               />
               <path
                 d="M236.85 65.61V31.18h-11.444v34.43h11.445zm-5.72-39.13c3.99 0 6.474-2.644 6.474-5.948-.075-3.379-2.484-5.949-6.398-5.949-3.917 0-6.475 2.57-6.475 5.949 0 3.304 2.483 5.948 6.324 5.948h.074zM243.184 65.61h11.443V46.385c0-1.028.075-2.058.377-2.792.827-2.057 2.71-4.186 5.872-4.186 4.14 0 5.797 3.157 5.797 7.786V65.61h11.443V45.869c0-10.575-5.645-15.496-13.174-15.496-6.173 0-8.884 3.45-10.39 5.8h.076v-4.992h-11.443c.149 3.23-.001 34.43-.001 34.43z"
-                fill="#fff"/></svg></a>
+                fill="#fff"
+              /></svg
+          ></a>
           <a
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -260,7 +265,8 @@
             >
               <path
                 d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-              ></path></svg></a>
+              ></path></svg
+          ></a>
           <a
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -271,11 +277,13 @@
             >
               <path
                 d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
-              ></path></svg></a>
+              ></path></svg
+          ></a>
         </div>
       </div>
     </footer>
 
-    <script type="module" src="./main.js"></script>
+
+    <script type="module" src="../scripts/checkout.js"></script>
   </body>
 </html>

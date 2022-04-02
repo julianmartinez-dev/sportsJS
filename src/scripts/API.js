@@ -17,6 +17,8 @@ export const nuevoProducto = async (producto) => {
   }
 };
 
+
+
 //Obtiene todos los productos
 export const obtenerProductos = async () => {
   try {
@@ -73,3 +75,4 @@ export async function filtrarBD(key, value) {
   const datos = await respuesta.json();
   return datos;
 }
+

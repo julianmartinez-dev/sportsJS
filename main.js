@@ -97,12 +97,15 @@ function leerDatosProducto(producto) {
     producto.querySelector('div .precio').textContent.slice(1)
   ); //string: $1500 -> int: 1500
   const id = producto.querySelector('label').getAttribute('data-id');
-
+  const imagen = producto.parentElement.querySelector('img').src;
+  
+  console.log(imagen)
   const infoProducto = {
     titulo,
     precio,
     id,
     cantidad: 1,
+    imagen
   };
 
   //Revisa si un elemento ya existe en el carrito
@@ -142,7 +145,7 @@ function calcularCantidadArticulos() {
   cantidadArticulos[1].textContent = `Cantidad de articulos: ${cantidad}`;
 }
 
-function calcularSubtotal() {
+export function calcularSubtotal() {
   //Funcion para calcular el subtotal del carrito
   //Recorre el arreglo de carrito y suma todos los productos que hay
   let resultado = articulosCarrito.reduce(
@@ -181,7 +184,7 @@ async function filtrarProductos(e){
 }
 
 
-function sincronizarStorage() {
+export function sincronizarStorage() {
   localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
 }
 
