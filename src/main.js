@@ -1,12 +1,12 @@
-import { filtrarBD, obtenerProductos } from './src/scripts/API.js';
-import Iterator from './src/scripts/funciones.js';
+import { filtrarBD, obtenerProductos } from './scripts/API.js';
+import Iterator from './scripts/funciones.js';
 import {
   cambiarModoDark,
   carritoHTML,
   crearCard,
   limpiarHTML,
-} from './src/scripts/Interface.js';
-import './src/style.css';
+} from './scripts/Interface.js';
+import './style.css';
 
 //Variables
 let articulosCarrito = [];

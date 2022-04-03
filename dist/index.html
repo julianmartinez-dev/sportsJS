@@ -4,28 +4,26 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <title>SportsJS - Ecommerce</title>
-    <script type="module" crossorigin src="/assets/main.14601b1e.js"></script>
-    <link rel="modulepreload" href="/assets/Interface.d5aec304.js">
-    <link rel="modulepreload" href="/assets/API.47651970.js">
-    <link rel="stylesheet" href="/assets/Interface.b6170e03.css">
+    <script type="module" crossorigin src="/assets/main.8837de02.js"></script>
+    <link rel="modulepreload" href="/assets/Interface.37c17ae7.js">
+    <link rel="modulepreload" href="/assets/API.f547df2b.js">
+    <link rel="stylesheet" href="/assets/Interface.53a94ed9.css">
   </head>
   <body>
-    <header class="mt-2">
-      <div
-        class="navbar bg-base-100 shadow-xl rounded-box flex justify-around md:justify-between container mx-auto"
-      >
+    <header class="mt-2 fixed w-full z-10">
+      <div class="navbar bg-base-100 shadow-md shadow-warning/80 rounded-box flex flex-col md:flex-row justify-around md:justify-between container mx-auto md:px-10">
+
+        <!--Logo-->
         <div>
           <a class="btn btn-ghost normal-case text-3xl text-yellow-500">
             <img src="/assets/sport.73cbfc9f.png" alt="imagen logo" class="w-10 mr-4" />Sports JS
           </a>
         </div>
 
-        <div>
+        <div class=" gap-3 flex justify-around md:justify-end w-full mt-5 md:mt-0">
           <!--Boton dark/light mode-->
-
-          <label class="swap swap-rotate">
+          <label class="swap swap-rotate" title="Modo oscuro On/Off">
             <!-- this hidden checkbox controls the state -->
             <input id="dark-mode" type="checkbox" />
 
@@ -51,94 +49,91 @@
               />
             </svg>
           </label>
-        </div>
-
-        <div class="flex-none">
-          <!--Botón Carrito-->
-
+          
+          <!--Boton Administrador-->
           <div class="dropdown dropdown-end">
-            <label tabindex="0" class="btn btn-ghost btn-circle">
-              <div class="indicator">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-8 w-8"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <span
-                  class="badge-warning badge-sm indicator-item text-md  text-black cantidad-articulos"
-                  >0</span
-                >
+            <label tabindex="0" class="btn btn-ghost" title="Ingresar al panel de administracion">
+              <div class="w-10 rounded-full">
+                <img src="data:image/png;base64,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" />
               </div>
             </label>
-            <div
+            <ul
               tabindex="0"
-              class="mt-3 card card-compact dropdown-content w-80 sm:w-fit bg-base-100 shadow"
+              class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-[150px]"
             >
-              <div class="card-body">
-                <p
-                  class="font-bold text-xl text-warning cantidad-articulos"
-                ></p>
-                <p class="text-info text-md"><span id="subtotal"></span></p>
+              <li><a href="./pages/login.html" class="hover:bg-warning hover:text-black">Ingreso Admin</a></li>
+              <li><a class="hover:bg-warning hover:text-black">Logout</a></li>
+            </ul>
+          </div>
 
-                <div class="overflow-x-auto">
-                  <table class="table w-full">
-                    <!-- head -->
-                    <thead>
-                      <tr class="hover">
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cant.</th>
-                        <th>Borrar</th>
-                      </tr>
-                    </thead>
-                    <tbody id="carrito"></tbody>
-                  </table>
-                </div>
-                <div class="card-actions">
-                  <button class="btn btn-warning btn-block" id="vaciar-carrito">
-                    Vaciar Carrito
-                  </button>
-                  <a
-                    href="#"
-                    class="btn btn-warning btn-block"
-                    id="terminar-compra"
-                    >Terminar compra</a
+          <!--Boton carrito-->
+          <div class="flex-none">
+            <!--Botón Carrito-->
+
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn btn-ghost btn-circle">
+                <div class="indicator">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  <span
+                    class="badge-warning badge-sm indicator-item text-md  text-black cantidad-articulos"
+                    >0</span
+                  >
+                </div>
+              </label>
+              <div
+                tabindex="0"
+                class="mt-3 card card-compact dropdown-content w-80 sm:w-fit bg-base-100 shadow overflow-scroll max-h-[300px] md:max-h-[600px] md:overflow-auto"
+              >
+                <div class="card-body">
+                  <p
+                    class="font-bold text-xl text-warning cantidad-articulos"
+                  ></p>
+                  <p class="text-info text-xl"><span id="subtotal"></span></p>
+
+                  <div class="overflow-x-auto">
+                    <table class="table w-full">
+                      <!-- head -->
+                      <thead>
+                        <tr class="hover">
+                          <th>Producto</th>
+                          <th>Precio</th>
+                          <th>Cant.</th>
+                          <th>Borrar</th>
+                        </tr>
+                      </thead>
+                      <tbody id="carrito"></tbody>
+                    </table>
+                  </div>
+                  <div class="card-actions">
+                    <button class="btn btn-warning btn-block" id="vaciar-carrito">
+                      Vaciar Carrito
+                    </button>
+                    <a
+                      href="./pages/checkout.html"
+                      class="btn btn-warning btn-block"
+                      id="terminar-compra"
+                      >Terminar compra</a
+                    >
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div class="dropdown dropdown-end">
-          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
-              <img src="https://api.lorem.space/image/face?hash=33791" />
-            </div>
-          </label>
-          <ul
-            tabindex="0"
-            class="mt-48 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a class="justify-between">
-                Profile
-                <span class="badge">New</span>
-              </a>
-            </li>
-            <li><a href="./pages/login.html">Ingresar</a></li>
-            <li><a>Logout</a></li>
-          </ul>
-        </div>
+       
       </div>
     </header>
 
@@ -152,15 +147,27 @@
         <div class="hero-content text-center text-neutral-content">
           <div class="max-w-md text-teal-100">
             <h1 class="mb-5 text-6xl font-bold">Bienvenido</h1>
-            <p class="mb-5 text-xl">
+            <p class="mb-5 text-2xl leading-10">
               En SportsJS nos especializamos en productos deportivos y todo lo
               que necesitas para rendir al máximo.
             </p>
-            <input
-              type="text"
-              placeholder="Buscar"
-              class="input input-bordered w-full "
-            />
+
+            <form action="" id="busqueda-rapida">
+              <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full py-2 block appearance-none bg-gray-200 text-gray-700 first-line:border border-gray-200 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 rounded-full">
+                  <input
+                    class="py-2 pl-4 bg-transparent"
+                    id="busqueda-input"
+                    type="text"
+                    placeholder="Ej: Nike, Running, etc."
+                  />
+                  <button class="bg-gray-900 px-4 py-2 uppercase text-gray-50 rounded-full hover:cursor-pointer hover:bg-gray-700">
+                    Buscar
+                  </button>
+                </div>
+              </div>
+            </form>
+            
           </div>
         </div>
       </div>
@@ -168,10 +175,10 @@
 
 
     <section class="bg-primary">
-      <nav class="container flex justify-center mx-auto py-6" id="filtros">
+      <nav class="container flex flex-wrap justify-center mx-auto py-6" id="filtros">
         <div class="dropdown dropdown-hover">
           <label tabindex="0" class="btn m-1 text-warning">Genero</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box w-52">
+          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box  max-w-52">
             <li><a data-filtro="genero">Masculino</a></li>
             <li><a data-filtro="genero">Femenino</a></li>
             <li><a data-filtro="genero">Unisex</a></li>
@@ -180,7 +187,7 @@
 
         <div class="dropdown dropdown-hover">
           <label tabindex="0" class="btn m-1 text-warning">Disciplina</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box w-52">
+          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box max-w-52">
             <li><a data-filtro="categoria">Running</a></li>
             <li><a data-filtro="categoria">Entrenamiento</a></li>
             <li><a data-filtro="categoria">Fútbol</a></li>
@@ -189,7 +196,7 @@
 
         <div class="dropdown dropdown-hover">
           <label tabindex="0" class="btn m-1 text-warning">Marcas</label>
-          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box w-52">
+          <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-primary rounded-box max-w-52">
             <li><a data-filtro="marca">Adidas</a></li>
             <li><a data-filtro="marca">Nike</a></li>
             <li><a data-filtro="marca">Puma</a></li>
@@ -220,10 +227,10 @@
       </div>
     </main>
 
-    <footer class="footer footer-center p-10 bg-warning text-zinc-900 mt-16">
+    <footer class="footer footer-center p-5 bg-warning text-zinc-900 mt-16">
       <div>
         <a href="#"
-          ><img src="./src/assets/sportFooter.png" alt="" class="w-24 mr-4"
+          ><img src="/assets/sportFooter.36ce7e71.png" alt="" class="w-24 mr-4"
         /></a>
         <p class="font-bold">Sports JS. <br />Tienda deportiva</p>
         <p>Proyecto Educativo - CoderHouse</p>
@@ -254,28 +261,16 @@
               <path
                 d="M236.85 65.61V31.18h-11.444v34.43h11.445zm-5.72-39.13c3.99 0 6.474-2.644 6.474-5.948-.075-3.379-2.484-5.949-6.398-5.949-3.917 0-6.475 2.57-6.475 5.949 0 3.304 2.483 5.948 6.324 5.948h.074zM243.184 65.61h11.443V46.385c0-1.028.075-2.058.377-2.792.827-2.057 2.71-4.186 5.872-4.186 4.14 0 5.797 3.157 5.797 7.786V65.61h11.443V45.869c0-10.575-5.645-15.496-13.174-15.496-6.173 0-8.884 3.45-10.39 5.8h.076v-4.992h-11.443c.149 3.23-.001 34.43-.001 34.43z"
                 fill="#fff"/></svg></a>
-          <a
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              class="fill-current"
-            >
-              <path
-                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-              ></path></svg></a>
-          <a
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              class="fill-current"
-            >
-              <path
-                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
-              ></path></svg></a>
+           <a
+            href="https://github.com/julianmartinez-dev/sportsJS"
+            target="_blank"
+            rel="noreferrer noopenener"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
