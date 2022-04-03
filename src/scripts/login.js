@@ -1,7 +1,7 @@
 import { mostrarAlerta } from '../scripts/Interface'
 
-const usuario = 'coder';
-const contraseña = 'coder2022'; 
+const usuario = 'coder'
+const contraseña = 'coder2022'
 
 const btnInciarSesion = document.querySelector('#iniciar-sesion')
 

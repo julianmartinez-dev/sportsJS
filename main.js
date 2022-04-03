@@ -1,4 +1,3 @@
-
 import { filtrarBD, obtenerProductos } from './src/scripts/API.js';
 import Iterator from './src/scripts/funciones.js';
 import {

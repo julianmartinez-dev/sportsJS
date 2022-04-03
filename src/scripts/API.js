@@ -18,13 +18,13 @@ export const nuevoProducto = async (producto) => {
 };
 
 
-
 //Obtiene todos los productos
 export const obtenerProductos = async () => {
   try {
     const resultado = await fetch(url);
     const datos = await resultado.json();
     return datos;
+
   } catch (error) {
     console.log(error);
   }

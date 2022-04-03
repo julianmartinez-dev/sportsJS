@@ -94,13 +94,9 @@
 
 
 
-      <div class="md:w-2/3 mx-auto md:flex gap-4 justify-around mt-10">
+      <div class="flex flex-col md:w-2/3 mx-auto md:flex-row gap-4 justify-around mt-10">
 
-        <div id="lista-productos" class=" md:overflow-scroll md:h-screen">
-          
-        </div>
-
-        <div>
+        <div class="order-2 md:order-1">
             <div class="w-full text-2xl p-4 font-bold">
                 <p>Subtotal: <span id="subtotal" class="font-normal"></span></p>
                 <p>Impuestos (21%): <span id="impuestos" class="font-normal">#</span></p>
@@ -202,6 +198,9 @@
             </form>
         </div>
 
+        <div id="lista-productos" class=" md:overflow-auto md:h-screen p-5 order-1">
+          
+        </div>
 
 
       </div>

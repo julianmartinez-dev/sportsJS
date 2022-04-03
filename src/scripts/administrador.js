@@ -7,7 +7,6 @@ listado.addEventListener('click', confirmarEliminar);
 
 document.addEventListener('DOMContentLoaded', ()=>{
     const autenticado = sessionStorage.getItem('usuarioAutenticado') || false;
-    console.log(autenticado)
     autenticado ? mostrarProductos() : deshabilitarElementos()
 });
 

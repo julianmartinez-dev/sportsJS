@@ -1,9 +1,8 @@
 import '../style.css';
 import { limpiarHTML, mostrarAlerta } from './Interface';
 
-
 const listadoProductos = document.querySelector('#lista-productos');
-const formulario = document.querySelector('#formulario')
+const formulario = document.querySelector('#formulario');
 const dialog = document.querySelector('dialog');
 const cerrarDialog = document.querySelector('#cerrar-dialog');
 let articulosCarrito;
@@ -11,21 +10,16 @@ let articulosCarrito;
 document.addEventListener('DOMContentLoaded', () => {
   articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
   listarProductosCarrito(articulosCarrito);
-  calcularSubtotal(articulosCarrito)
+  calcularSubtotal(articulosCarrito);
   mostrarTotales();
-  registrarEventos()
+  registrarEventos();
 });
 
-function registrarEventos(){
+function registrarEventos() {
   listadoProductos.addEventListener('click', eliminarProducto);
   formulario.addEventListener('submit', validarFormulario);
-  cerrarDialog.addEventListener('click', () =>{
-     dialog.close();
-     formulario.reset();
-  });
+  cerrarDialog.addEventListener('click', () => dialog.close());
 }
-
-
 
 const listarProductosCarrito = (articulos) => {
   if (articulos.length) {
@@ -60,48 +54,44 @@ const listarProductosCarrito = (articulos) => {
 };
 
 function eliminarProducto(e) {
- 
   if (e.target.classList.contains('borrar-item')) {
-
     //Obtenemos el id del articulo a borrar
     const itemID = e.target.getAttribute('data-id');
-   
+
     //Elimina del arreglo de articulosCarrito por el data-id
     articulosCarrito = articulosCarrito.filter(
       (producto) => producto.id !== itemID
     );
 
     //Quita el articulo eliminado del html y vuelve a generarlo
-    limpiarHTML(listadoProductos)
+    limpiarHTML(listadoProductos);
     listarProductosCarrito(articulosCarrito);
-    calcularSubtotal(articulosCarrito)
-    mostrarTotales()
+    calcularSubtotal(articulosCarrito);
+    mostrarTotales();
     localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
-    }
-  
+  }
 }
 
-function calcularSubtotal(carrito){
+function calcularSubtotal(carrito) {
   let resultado = carrito.reduce(
     (acc, articulo) => acc + articulo.precio * articulo.cantidad,
     0
   );
-  return resultado
+  return resultado;
 }
 
-function mostrarTotales(){ 
- const subtotal = document.querySelector('#subtotal');
- subtotal.innerHTML = `$${calcularSubtotal(articulosCarrito)}`;
+function mostrarTotales() {
+  const subtotal = document.querySelector('#subtotal');
+  subtotal.innerHTML = `$${calcularSubtotal(articulosCarrito)}`;
 
- const impuestos = document.querySelector('#impuestos');
- impuestos.innerHTML = `$${calcularSubtotal(articulosCarrito) * 0.21}`;
+  const impuestos = document.querySelector('#impuestos');
+  impuestos.innerHTML = `$${calcularSubtotal(articulosCarrito) * 0.21}`;
 
- const total = document.querySelector('#total');
- total.innerHTML = `$${calcularSubtotal(articulosCarrito) * 1.21}`;
-
+  const total = document.querySelector('#total');
+  total.innerHTML = `$${calcularSubtotal(articulosCarrito) * 1.21}`;
 }
 
-function validarFormulario(e){
+function validarFormulario(e) {
   e.preventDefault();
   const nombre = document.querySelector('#nombre').value;
   const email = document.querySelector('#email').value;
@@ -112,10 +102,10 @@ function validarFormulario(e){
 
   const inputs = [nombre, email, direccion, codigoPostal, ciudad, provincia];
 
-  if(inputs.includes('')){
-    console.log('Todos los campos son necesarios')
-    mostrarAlerta('Todos los campos son necesarios')
-  }else{
-    dialog.showModal();
+  if (inputs.includes('')) {
+    mostrarAlerta('Todos los campos son necesarios');
+    return;
   }
+  dialog.showModal();
+  formulario.reset();
 }

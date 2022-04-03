@@ -2,7 +2,6 @@ import { editarProducto, obtenerProducto } from './API.js';
 import { validar } from './funciones.js';
 import { mostrarAlerta } from './Interface.js'
 
-(function () {
   //CAMPOS DEL FORMULARIO
   const productoInput = document.querySelector('#producto');
   const marcaInput = document.querySelector('#marca');
@@ -13,6 +12,9 @@ import { mostrarAlerta } from './Interface.js'
   const imagenInput= document.querySelector('#imagen');
   const idInputInput= document.querySelector('#id');
   const imagenEditando = document.querySelector('#imagen-producto-editando')
+  document.getElementById('upload_widget').addEventListener('click',() => {
+      myWidget.open() 
+    },false);
 
   document.addEventListener('DOMContentLoaded', async () => {
     const parametrosURL = new URLSearchParams(window.location.search);
@@ -65,4 +67,17 @@ import { mostrarAlerta } from './Interface.js'
       mostrarAlerta('Todos los campos son obligatorios');
     }
   }
-})();
+
+  const myWidget = cloudinary.createUploadWidget(
+    {
+      cloudName: 'dbfueqhpu',
+      uploadPreset: 'z8rrngrv',
+    },
+    (error, result) => {
+      if (!error && result && result.event === 'success') {
+        const urlImagen = result.info.secure_url;
+        document.querySelector('#imagen').value = urlImagen;
+      }
+    }
+  );
+
