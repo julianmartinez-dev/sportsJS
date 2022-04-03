@@ -1,7 +1,8 @@
 import '../style.css';
-import { limpiarHTML, mostrarAlerta } from './Interface';
+import { limpiarHTML, mostrarAlerta, cambiarModoDark } from './Interface';
 
 const listadoProductos = document.querySelector('#lista-productos');
+const darkModeToggle = document.querySelector('#dark-mode')
 const formulario = document.querySelector('#formulario');
 const dialog = document.querySelector('dialog');
 const cerrarDialog = document.querySelector('#cerrar-dialog');
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function registrarEventos() {
   listadoProductos.addEventListener('click', eliminarProducto);
+  darkModeToggle.addEventListener('click', cambiarModoDark);
   formulario.addEventListener('submit', validarFormulario);
   cerrarDialog.addEventListener('click', () => dialog.close());
 }

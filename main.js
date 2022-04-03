@@ -11,19 +11,14 @@ import './src/style.css';
 //Variables
 let articulosCarrito = [];
 
-
 const darkMode = document.querySelector('#dark-mode');
+const busquedaRapida = document.querySelector('#busqueda-rapida');
 const carrito = document.querySelector('#carrito');
 const subtotal = document.querySelector('#subtotal');
 const cantidadArticulos = document.querySelectorAll('.cantidad-articulos');
 const vaciarCarritoBTN = document.querySelector('#vaciar-carrito');
-const filtrosNav = document.querySelector('#filtros')
+const filtrosNav = document.querySelector('#filtros');
 const listadoProductos = document.querySelector('#resultado');
-
-
-
-const url = 'https://622c19f3087e0e041e0343ba.mockapi.io/productos';
-
 
 //Evento principal - Cuando se carga el documento principal
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,27 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
   mostrarProductos();
 
   //Recuperar localStorage
-  articulosCarrito = JSON.parse( localStorage.getItem('carrito') ) || []
-  carritoHTML(articulosCarrito)
-  calcularSubtotal()
-  calcularCantidadArticulos()
-
-
+  articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  carritoHTML(articulosCarrito);
+  calcularSubtotal();
+  calcularCantidadArticulos();
 });
 
 //Eventos
 function registrarEventos() {
   darkMode.addEventListener('click', cambiarModoDark);
   carrito.addEventListener('click', eliminarProducto);
-  filtrosNav.addEventListener('click',filtrarProductos)
+  filtrosNav.addEventListener('click', filtrarProductos);
   vaciarCarritoBTN.addEventListener('click', vaciarCarrito);
+  busquedaRapida.addEventListener('submit', buscarProducto);
 }
-
 
 const mostrarProductos = async () => {
   try {
-
-    const datos = await obtenerProductos()
+    const datos = await obtenerProductos();
     const iterador = new Iterator(datos);
 
     while (iterador.hasNext()) {
@@ -97,14 +89,14 @@ function leerDatosProducto(producto) {
   ); //string: $1500 -> int: 1500
   const id = producto.querySelector('label').getAttribute('data-id');
   const imagen = producto.parentElement.querySelector('img').src;
-  
-  console.log(imagen)
+
+  console.log(imagen);
   const infoProducto = {
     titulo,
     precio,
     id,
     cantidad: 1,
-    imagen
+    imagen,
   };
 
   //Revisa si un elemento ya existe en el carrito
@@ -133,13 +125,13 @@ function leerDatosProducto(producto) {
   sincronizarStorage();
   //Actualizar la cantidad de articulos en el carrito
   calcularCantidadArticulos();
-
-  
 }
 
 function calcularCantidadArticulos() {
-
-  let cantidad = articulosCarrito.reduce( (acc, articulo) => acc + articulo.cantidad,0)
+  let cantidad = articulosCarrito.reduce(
+    (acc, articulo) => acc + articulo.cantidad,
+    0
+  );
   cantidadArticulos[0].textContent = cantidad;
   cantidadArticulos[1].textContent = `Cantidad de articulos: ${cantidad}`;
 }
@@ -156,43 +148,61 @@ export function calcularSubtotal() {
   subtotal.innerText = `Subtotal: $${resultado}`;
 }
 
-async function filtrarProductos(e){
-  
-  if(e.target.getAttribute('data-filtro') !== null){
-
+async function filtrarProductos(e) {
+  if (e.target.getAttribute('data-filtro') !== null) {
     const key = e.target.getAttribute('data-filtro');
     const value = e.target.textContent;
-    limpiarHTML(listadoProductos)
+    limpiarHTML(listadoProductos);
 
-    if(key === 'all'){ //Click en Ver Todos tiene asignado "all"
+    if (key === 'all') {
+      //Click en Ver Todos tiene asignado "all"
       mostrarProductos();
       document.querySelector('#titulo-lista').textContent = '';
       return;
     }
-    const productosFiltrados = await filtrarBD(key,value) // Filtramos la base de datos
+    const productosFiltrados = await filtrarBD(key, value); // Filtramos la base de datos
 
     document.querySelector('#titulo-lista').textContent = `Filtro: ${value}`;
 
     const iterador = new Iterator(productosFiltrados);
-    while(iterador.hasNext()){
+    while (iterador.hasNext()) {
       const elemento = iterador.next();
-      crearCard(elemento,agregarProducto);
+      crearCard(elemento, agregarProducto);
     }
-
-  } 
+  }
 }
-
 
 export function sincronizarStorage() {
   localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
 }
 
-function vaciarCarrito(){
-   articulosCarrito = [];
-   limpiarHTML(carrito);
-   calcularCantidadArticulos();
-   calcularSubtotal();
-   sincronizarStorage();
+function vaciarCarrito() {
+  articulosCarrito = [];
+  limpiarHTML(carrito);
+  calcularCantidadArticulos();
+  calcularSubtotal();
+  sincronizarStorage();
 }
 
+async function buscarProducto(e) {
+  e.preventDefault();
+  const query = e.target.querySelector('#busqueda-input').value;
 
+  const productosFiltrados = await filtrarBD('search', query);
+
+  if (productosFiltrados.length) {
+    limpiarHTML(listadoProductos);
+    document.querySelector('#titulo-lista').textContent = `Filtro: ${query}`;
+
+    const iterador = new Iterator(productosFiltrados);
+    while (iterador.hasNext()) {
+      const elemento = iterador.next();
+      crearCard(elemento, agregarProducto);
+    }
+
+  }else{
+    
+    document.querySelector('#titulo-lista').textContent = `Ninguna Coinicidencia para el filtro: ${query}`;
+  }
+
+}

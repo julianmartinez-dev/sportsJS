@@ -31,7 +31,7 @@ export function crearCard(datos,callback) {
   card.className =
     'card max-w-96 bg-base-100 shadow-md hover:shadow-yellow-300 borderer mx-auto';
   card.innerHTML = `
-  <figure class="pt-4"><img src=${imagen} alt="imagen ropa"></figure>
+  <figure class="pt-4"><img src=${imagen} alt="imagen ropa" class="max-w-[280px]"></figure>
   <div class="card-body">
     <h2 class="card-title">${marca} ${producto}</h2>
     <div class="badge badge-secondary py-4 text-lg precio">$${precio}</div>

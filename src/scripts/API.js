@@ -70,6 +70,7 @@ export const editarProducto = async (producto) => {
 
 export async function filtrarBD(key, value) {
   const urlFiltrar = `${url}?${key}=${value}`
+  console.log(urlFiltrar)
   
   const respuesta = await fetch(urlFiltrar);
   const datos = await respuesta.json();
