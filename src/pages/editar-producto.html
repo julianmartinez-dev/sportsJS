@@ -24,7 +24,7 @@
                 <img class="mx-auto mt-36 border-2 border-slate-700 rounded-md" src="" alt="producto a editar" id="imagen-producto-editando">
             </nav>
         </aside> <!--sidebar-->
-        <main class="md:w-3/5  xl:w-4/5 px-5 py-10">
+        <main class="md:w-3/5  xl:w-4/5 md:px-5 py-10">
             <h2 class="text-3xl font-light text-center">Editar Producto</h2>
 
             <div class="flex flex-col mt-10 items-center">
@@ -99,35 +99,43 @@
 
                             <div class="mb-4">
                                 <label class="block text-gray-700 text-sm font-bold" for="imagen">Imagen</label>
-                                <input
-                                id="upload_widget"
-                                type="button"
-                                class="bg-slate-600 hover:bg-slate-900 mt-5 p-2 text-white uppercase font-bold w-full md:w-1/3 hover:cursor-pointer"
-                                value="Subir Imagen"
-                            />
-                                <input 
-                                    class="appearance-none border rounded mt-5 py-2 ml-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="imagen"
-                                    name="imagen"
-                                    type="text"
-                                    placeholder="URL de la imagen"
-                                />
+                                <div class="flex w-full flex-col md:flex-row">
+                                  <input
+                                  id="upload_widget"
+                                  type="button"
+                                  class="bg-slate-600 hover:bg-slate-900 mt-5 p-2 text-white uppercase font-bold w-full over:cursor-pointer md:w-1/3"
+                                  value="Subir Imagen"
+                                  >
+                                  <input 
+                                      class="appearance-none border rounded mt-5 py-2 ml-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline md:w-2/3"
+                                      id="imagen"
+                                      name="imagen"
+                                      type="text"
+                                      placeholder="URL de la imagen"
+                                      readonly
+                                  >
+                                </div>
                             </div>
-                            <input type="hidden" name="id" id="id" value="">
 
 
                             <input
                                 type="submit"
                                 class="bg-slate-600 hover:bg-slate-900 w-full mt-5 p-2 text-white uppercase font-bold"
                                 value="Editar Producto"
-                            />
+                                disabled
+                            >
+
+                          <input type="hidden" name="id" id="id" value="">  
                         </form>
+
+                        
+                        
                     </div>
                 </div>
             </div>
         </main>
     </div>
-        <footer class="footer footer-center p-10 bg-warning text-zinc-900">
+        <footer class="footer footer-center p-5 bg-warning text-zinc-900">
       <div>
         <a href="../../index.html"
           ><img src="../assets/sportFooter.png" alt="imagen footer" class="w-24 mr-4"
@@ -164,29 +172,15 @@
               /></svg
           ></a>
           <a
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              class="fill-current"
-            >
-              <path
-                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
-              ></path></svg
-          ></a>
-          <a
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              class="fill-current"
-            >
-              <path
-                d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
-              ></path></svg
-          ></a>
+            href="https://github.com/julianmartinez-dev/sportsJS"
+            target="_blank"
+            rel="noreferrer noopenener"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>

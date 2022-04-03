@@ -52,6 +52,11 @@ const listarProductosCarrito = (articulos) => {
          `;
       listadoProductos.appendChild(card);
     });
+  }else{
+    listadoProductos.innerHTML = `
+      <p>No hay productos en el carrito</p>
+      <p>Agrega algún producto al carrito y lo veras reflejado aqui.</p>
+    `;
   }
 };
 
